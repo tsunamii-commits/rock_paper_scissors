@@ -15,42 +15,99 @@ Conditions:
 
 let playerPoint = 0
 let computerPoint = 0
+const rockButton = document.querySelector('.rock');
+const paperButton = document.querySelector('.paper');
+const scissorsButton = document.querySelector('.scissors');
+const outcomeDiv = document.querySelector('.outcome');
+let pResult = document.getElementById('result');
+let pScore = document.getElementById('score');
+var playerSelection;
 
+    
 
-function getPlayerChoice() {
-    input = prompt("Rock, Paper, Scissors?")
-    return input.toLowerCase()
-}
-
-function getComputerChoice(list) {
-    return list[Math.floor((Math.random()*list.length))]
+//gets computer choice
+function getComputerChoice() {
+    const computerChoices = ["rock","paper","scissors"]
+    const randomNum = [Math.floor((Math.random()*computerChoices.length))]
+    return computerChoices[randomNum]
 }
 
 function checkWinner(computerSelection, playerSelection){
-if (playerSelection == "rock" && computerSelection == "scissors" || playerSelection == "paper" && computerSelection == "rock" || playerSelection == "scissors" && computerSelection == "paper" ){
+    console.log(computerSelection, playerSelection)
+    console.log(computerPoint, playerPoint)
+    console.log(pScore)
+    if (playerSelection == "rock" && computerSelection == "scissors" || playerSelection == "paper" && computerSelection == "rock" || playerSelection == "scissors" && computerSelection == "paper" ){
         playerPoint++;
-        return "You Win! " + playerSelection + " beats " + computerSelection + ".";
+        pResult.innerHTML = "You Win! " + playerSelection + " beats " + computerSelection + ".";
+        pScore.innerHTML = "Your Score: "+ playerPoint + " | " + "Computer Score: " + computerPoint;
+        // return "You Win! " + playerSelection + " beats " + computerSelection + ".";
     } else if (!(playerSelection == "rock" || playerSelection == "paper" || playerSelection == "scissors")) {
-        return "Invalid input :(";
-    } else if (playerSelection == "rock" && computerSelection == "rock" || playerSelection == "paper" && computerSelection == "paper" || playerSelection == "scissors" && computerSelection == "scissors" ) { 
-        return "Wowee, it's a tie!";
+        //const p = document.createElement('p');
+        pResult.innerHTML = "Invalid input :(";
+        pScore.innerHTML = "Your Score: "+ playerPoint + " | " + "Computer Score: " + computerPoint;
+        // outcomeDiv.appendChild(p);
+        //return "Invalid input :(";
     } else {
         computerPoint++;
-        return "You Lose! " + computerSelection + " beats " + playerSelection + " :( .";
+        //const p = document.createElement('p');
+        pResult.innerHTML = "You Lose! "+ computerSelection + " beats " + playerSelection + " :( .";
+        pScore.innerHTML = "Your Score: "+ playerPoint + " | " + "Computer Score: " + computerPoint;
+
+        //outcomeDiv.appendChild(p);
+        //return "You Lose! " + computerSelection + " beats " + playerSelection + " :( .";
     }
+} 
+
+function resetScore () {
+        playerPoint = 0;
+        computerPoint = 0;
+}
+const checkResult = (playerPoint,computerPoint) => {
+    if (playerPoint === 5) {
+        pResult.innerHTML = "You win! Humans rule!";
+        resetScore();
+    } else if (computerPoint === 5) {
+        pResult.innerHTML = "You lose! The singularity is coming!";
+        resetScore();        
+}
 }
 
+rockButton.addEventListener("click", () => {
+    const computerSelection = getComputerChoice();
+    const playerSelection = "rock";
+    checkWinner(computerSelection, playerSelection);
+    checkResult(playerPoint,computerPoint);
+});
 
+paperButton.addEventListener("click", () => {
+    const computerSelection = getComputerChoice();
+    const playerSelection = "paper";
+    checkWinner(computerSelection, playerSelection);
+    checkResult(playerPoint,computerPoint);
+});
+    
+
+scissorsButton.addEventListener("click", () => {
+    const computerSelection = getComputerChoice();
+    const playerSelection = "scissors";
+    checkWinner(computerSelection, playerSelection);
+    checkResult(playerPoint,computerPoint);
+});
+
+
+//loops the game 5 times
+/*
 function game() {
     for (let i = 0; i < 5; i++) {
-        const playerSelection = getPlayerChoice()
-        const computerSelection = getComputerChoice(["rock","paper","scissors"])
+
         checkWinner()
         console.log("* " + checkWinner(computerSelection, playerSelection))
         console.log("Your choice: " + playerSelection)
         console.log("Computer choice: " + computerSelection)
     }
 
+
+//measures points -> change this
     if (playerPoint > computerPoint) {
         console.log("*** You beat the computer! Great job :)")
         console.log("Your points: " + playerPoint)
@@ -65,6 +122,5 @@ function game() {
         console.log("Computer points: " + computerPoint)
     }
         
-    }
-
-game()
+}
+*/

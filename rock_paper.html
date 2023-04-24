@@ -3,8 +3,124 @@
 <head>
   <meta charset="UTF-8">
   <title>Page Title</title>
+
+  <style> 
+      * {
+      margin: 0;
+      padding: 0;
+      background-color: #FFC0CB;
+    }
+
+    button {
+      border: none;
+      cursor: pointer;
+      appearance: none;
+      background-color: inherit;
+    }
+
+    div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 40px;
+  white-space: initial;
+
+}
+
+      button {
+        transition: transform 0.7s ease-in-out;
+        margin: 20px;
+      }
+
+      button:hover {
+        transform: rotate(360deg);
+      }
+
+      img {
+        width: 100px;
+        height: 100px;
+      }
+
+      input[type='rock'] {
+        padding: 10px;
+        border: 2px solid #314de4;
+        outline: none;
+        border-radius: 20px;
+        font-size: 24px;
+        color: #314de4;
+      }
+
+      .text {
+        font-size: 60px;
+        color: #314de4;
+        font-family: Arial;
+      }
+
+      h1 { 
+        color: #111; 
+        font-family: 'Helvetica Neue', sans-serif; 
+        font-size: 40px; 
+        font-weight: bold; 
+        letter-spacing: -1px; 
+        line-height: 1; 
+        text-align: center; 
+        margin-top: 100px;
+        margin-bottom: 50px;
+    }
+
+      h2 { color: #111; 
+        font-family: 'Open Sans', sans-serif; 
+        font-size: 30px; 
+        font-weight: 300; 
+        line-height: 32px; 
+        margin: 0 0 72px; 
+        text-align: center;
+        white-space: pre;
+  }
+      
+      .outcome{
+        margin: 20px;
+        }
+      
+        p { color: #685206;
+          font-family: 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          line-height: 24px;
+          margin: 0 0 24px;
+          text-align: justify;
+          text-justify: inter-word;
+          white-space: pre;
+          text-align: center;
+
+        }
+
+
+    
+
+  </style>
+
 </head>
 <body>
+  <h1>It's Play Time</h1>
+  <div class="playArea">
+
+    <button class="rock">
+      <img src="https://user-images.githubusercontent.com/120529885/232765301-32f94dc5-53c8-4314-87ef-a3a2db5ed2ac.png" alt="buttonpng" border="0" />
+    </button>
+    <button class="paper">
+      <img src="https://user-images.githubusercontent.com/120529885/232767338-5c8ddb8f-0c60-4084-ab1e-85bb276a44ab.png" alt="buttonpng" border="0" />
+    </button>
+    <button class="scissors">
+      <img src="https://user-images.githubusercontent.com/120529885/232767378-a02a01c4-5927-4fd8-87d4-63d511d3666b.png" alt="buttonpng" border="0" />
+    </button>
+  
+  </div>
+
+    <p id = "score"></p>
+
+    <h2 id ="result"></h2>
+
   <script src="rock_paper.js"></script>
+
 </body>
 </html>
